@@ -1,11 +1,10 @@
 import axios from "axios";
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
-var Auth = require("../auth.json");
+import dotenv from "dotenv";
+dotenv.config();
 
-const token = `Cryptum-Token ${Auth.cryptumToken}`;
+const token = `Cryptum-Token ${process.env.CRYPTUM_TOKEN}`;
 
-export const GetPlayerStatsAsync = async (gamerTag) => {
+export const GetPlayerServiceRecordAsync = async (gamerTag) => {
   const response = await axios.get(
     `https://cryptum.halodotapi.com/games/hi/stats/players/${gamerTag}/service-record/global`,
     {
@@ -17,7 +16,7 @@ export const GetPlayerStatsAsync = async (gamerTag) => {
     }
   );
 
-  return response.data;
+  return response.data.data;
 };
 
 export const GetPlayerCSRAsync = async (gamerTag) => {
@@ -32,5 +31,20 @@ export const GetPlayerCSRAsync = async (gamerTag) => {
     }
   );
 
-  return response.data;
+  return response.data.data;
+};
+
+export const GetPlayerAppearanceAsync = async (gamerTag) => {
+  const response = await axios.get(
+    `https://cryptum.halodotapi.com/games/hi/appearance/players//${gamerTag}`,
+    {
+      headers: {
+        Authorization: token,
+        "Content-Type": "application/json",
+        "Cryptum-API-Version": "2.3-alpha",
+      },
+    }
+  );
+
+  return response.data.data;
 };
