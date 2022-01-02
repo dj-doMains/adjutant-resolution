@@ -45,9 +45,6 @@ export const GetPlayerDetailsAsEmbedAsync = async (gamerTag) => {
     const appearance = await HaloAPI.GetPlayerAppearanceAsync(gamerTag);
     const playerCsr = await HaloAPI.GetPlayerCSRAsync(gamerTag);
 
-    console.log(serviceRecord);
-    console.log("matches_played", serviceRecord.matches_played);
-
     return new MessageEmbed()
       .setColor("#507d2a")
       .setTitle(`${gamerTag} [${appearance.service_tag}]`)
