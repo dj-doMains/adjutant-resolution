@@ -5,7 +5,8 @@ export const GetHelp = () => {
   return `
 Commands:
     kdr {gamerTag}\t\tDisplays the kill/death ratio of a player.  
-    highestRank {gamerTag}\t\tDisplays the highest achieved CSR for a player.  
+    highestRank {gamerTag}\t\tDisplays the highest achieved CSR for a player.
+    playerDetails {gamerTag}\t\tDisplays the full service record for a player.
 `;
 };
 
